@@ -1,0 +1,12 @@
+const express=require("express")
+const srv=express()
+const route=express.Router()
+const todo=require('./routes/todos.js')
+srv.use(express.json())
+srv.use(express.urlencoded({extended:true}))
+srv.use("/routes",todo)
+srv.use("/public",express.static(__dirname+"/public"))
+ srv.use("/routes",todo)
+srv.listen(4567,()=>{
+    console.log("port started at 4567")
+})
